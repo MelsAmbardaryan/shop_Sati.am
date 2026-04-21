@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sati.am - Online Shop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        Անվճար առաքում 20,000 AMD-ից բարձր պատվերների համար &nbsp;|&nbsp; Գործում է ամեն օր 09:00 - 21:00
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <!-- Menu -->
+            <button class="menu-btn">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <span>Մենյու</span>
+            </button>
+
+            <!-- Logo -->
+            <div class="logo">
+                <span class="logo-main">Sati</span>
+                <span class="logo-badge">.am</span>
+            </div>
+
+            <!-- Search -->
+            <div class="search-wrap">
+                <div class="search-box">
+                    <input type="text" placeholder="Որոնել ապրանք..." />
+                    <button class="search-btn" aria-label="Search">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="language-switcher">
+            <button class="lang-btn" onclick="changeLanguage('pl')" title="Polski">🇵🇱</button>
+            <button class="lang-btn" onclick="changeLanguage('hy')" title="Հայերեն">🇦🇲</button>
+            <button class="lang-btn" onclick="changeLanguage('ru')" title="Русский">🇷🇺</button>
+            <button class="lang-btn" onclick="changeLanguage('en')" title="English">en</button>
+            </div>
+            <!-- Actions -->
+            <div class="header-actions">
+                <button class="action-btn" aria-label="Favorites">
+                    <i class="fa-solid fa-heart"></i>
+                </button>
+                <div class="action-divider"></div>
+                <button class="phone-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    010 00-00-00
+                </button>
+                <button class="action-btn" aria-label="Cart" onclick="openCartModal()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge">0</span>
+               </button>
+            </div>
+        </div>
+    </header>
+   
+
+    <section class="hero-section">
+        <div class="hero-slider">
+            <div class="swiper mySlider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-placeholder slide-p1">Sati</div>
+                        <div class="slide-content">
+                            <div class="slide-tag">Նոր ժամանել</div>
+                            <div class="slide-title">Ամառային<br>Հավաքածու 2025</div>
+                            <button class="slide-cta">Դիտել ավելին</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="slide-placeholder slide-p2">Sale</div>
+                        <div class="slide-content">
+                            <div class="slide-tag">Զեղչ մինչև 50%</div>
+                            <div class="slide-title">Ամենամեծ<br>Վաճառք տարվա</div>
+                            <button class="slide-cta">Գնել հիմա</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="slide-placeholder slide-p3">Best</div>
+                        <div class="slide-content">
+                            <div class="slide-tag">Լավագույն ընտրություն</div>
+                            <div class="slide-title">Պրեմիում<br>Ապրանքներ</div>
+                            <button class="slide-cta">Ուսումնասիրել</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- Side Banners -->
+        <div class="hero-banners">
+            <div class="banner">
+                <div class="banner-placeholder b-placeholder-1">Նոր Ժամանումներ</div>
+            </div>
+            <div class="banner">
+                <div class="banner-placeholder b-placeholder-2">Հատուկ Առաջարկ</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <section class="features-strip">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="feature-text">
+                    <strong>Արագ Առաքում</strong>
+                    <span>1-2 աշխ. օրում</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="feature-text">
+                    <strong>Անվտանգ Վճարում</strong>
+                    <span>100% պաշտպանված</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+                <div class="feature-text">
+                    <strong>14 Օր Վերադարձ</strong>
+                    <span>Անվճար վերադարձ</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="feature-text">
+                    <strong>24/7 Աջակցություն</strong>
+                    <span>Միշտ ձեր կողքին</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="products-section">
+        <div class="section-header">
+            <h2>Մեր Ապրանքները</h2>
+            <div class="category-filters" id="categoryFilters">
+                <button class="category-btn active" data-category="all">Բոլոր ապրանքները</button>
+                <button class="category-btn" data-category="Խմիչքներ">Խմիչքներ</button>
+                <button class="category-btn" data-category="Կաթնամթերք">Կաթնամթերք</button>
+                <button class="category-btn" data-category="Մսամթերք">Մսամթերք</button>
+                <button class="category-btn" data-category="Պահածոյացված ապրանքներ">Պահածոյացված</button>
+                <button class="category-btn" data-category="Սուրճ և թեյ">Սուրճ և թեյ</button>
+                <button class="category-btn" data-category="Ցորենի արտադրանք">Ցորենի արտադրանք</button>
+                <button class="category-btn" data-category="Քաղցրավենիք">Քաղցրավենիք</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Ապրանքները JavaScript-ով կավելանան այստեղ -->
+        </div>
+    </section>
+
+    <!-- Զամբյուղի Մոդալ -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Ձեր զամբյուղը</h2>
+                <span class="close-modal" onclick="closeCartModal()">×</span>
+            </div>
+            
+            <div id="cartItems" class="cart-items">
+                <!-- Ապրանքները կավելանան JavaScript-ով -->
+            </div>
+
+            <div class="cart-total">
+                <strong>Ընդհանուր գումար:</strong>
+                <span id="cartTotal">0 AMD</span>
+            </div>
+
+            <div class="modal-actions">
+                <button onclick="closeCartModal()" class="btn-secondary">Շարունակել գնումները</button>
+                <button onclick="checkout()" class="btn-primary">Պատվիրել</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

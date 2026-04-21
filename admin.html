@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ադմին Պանել - Sati.am</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #f7f3ec; font-family: 'DM Sans', sans-serif; }
+        .admin-container { max-width: 1300px; margin: 30px auto; padding: 20px; }
+        .admin-header {
+            background: #1b5e20;
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-container, .table-container {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+            color: #333;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        .btn {
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+        .btn-primary { background: #1b5e20; color: white; }
+        .btn-danger { background: #c62828; color: white; }
+        .product-image { width: 70px; height: 70px; object-fit: cover; border-radius: 10px; }
+        table th { background: #1b5e20; color: white; }
+        .success { color: #1b5e20; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <div class="admin-header">
+        <h1>🛠 Sati.am Ադմին Պանել</h1>
+        <p>Ապրանքների պրոֆեսիոնալ կառավարում</p>
+    </div>
+
+    <!-- Ապրանք ավելացնելու ձև -->
+    <div class="form-container">
+        <h2>➕ Նոր ապրանք ավելացնել</h2>
+        <form id="productForm" class="form-grid">
+            <div class="form-group">
+                <label>Ապրանքի անունը *</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>Գինը (AMD) *</label>
+                <input type="number" id="price" required>
+            </div>
+            <div class="form-group">
+                <label>Զեղչ (%) </label>
+                <input type="number" id="discount" value="0" min="0" max="100">
+            </div>
+            <div class="form-group">
+                <label>Պաշար (Stock) *</label>
+                <input type="number" id="stock" value="10" required>
+            </div>
+            <div class="form-group">
+                <label>Կատեգորիա *</label>
+                <select id="category" required>
+                    <option value="Խմիչքներ">Խմիչքներ</option>
+                    <option value="Կաթնամթերք">Կաթնամթերք</option>
+                    <option value="Մսամթերք">Մսամթերք</option>
+                    <option value="Պահածոյացված ապրանքներ">Պահածոյացված ապրանքներ</option>
+                    <option value="Սուրճ և թեյ">Սուրճ և թեյ</option>
+                    <option value="Ցորենի արտադրանք">Ցորենի արտադրանք</option>
+                    <option value="Մթերային ապրանքներ">Մթերային ապրանքներ</option>
+                    <option value="Նախուտեստներ">Նախուտեստներ</option>
+                    <option value="Քաղցրավենիք">Քաղցրավենիք</option>
+                    <option value="Չորացրած մրգեր և սուջուխ">Չորացրած մրգեր և սուջուխ</option>
+                    <option value="Հայկական հուշանվերներ">Հայկական հուշանվերներ</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Հատուկ առաջարկ</label>
+                <input type="checkbox" id="featured" style="width: auto;">
+            </div>
+            <div class="form-group full-width">
+                <label>Մանրամասն նկարագրություն</label>
+                <textarea id="description" rows="4"></textarea>
+            </div>
+            <div class="form-group full-width">
+                <label>Ապրանքի նկար *</label>
+                <input type="file" id="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ավելացնել ապրանքը</button>
+        </form>
+        <p id="message" style="margin-top: 15px;"></p>
+    </div>
+
+    <!-- Ապրանքների ցուցակ -->
+    <div class="table-container">
+        <h2>📦 Բոլոր ապրանքները</h2>
+        <table id="productsTable">
+            <thead>
+                <tr>
+                    <th>Նկար</th>
+                    <th>Անուն</th>
+                    <th>Գին</th>
+                    <th>Զեղչ</th>
+                    <th>Պաշար</th>
+                    <th>Կատեգորիա</th>
+                    <th>Գործողություններ</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
