@@ -21,50 +21,53 @@
 
     <!-- Header -->
     <header class="header">
-        <div class="header-inner">
-            <!-- Menu -->
-            <button class="menu-btn">
-                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                <span>Մենյու</span>
-            </button>
+    <!-- Header -->
+<header class="header">
+    <div class="header-inner">
+        <!-- Menu -->
+        <button class="menu-btn">
+            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <span data-i18n="menu">Մենյու</span>
+        </button>
 
-            <!-- Logo -->
-            <div class="logo">
-                <span class="logo-main">Sati</span>
-                <span class="logo-badge">.am</span>
-            </div>
+        <!-- Logo -->
+        <div class="logo">
+            <span class="logo-main">Sati</span>
+            <span class="logo-badge">.am</span>
+        </div>
 
-            <!-- Search -->
-            <div class="search-wrap">
-                <div class="search-box">
-                    <input type="text" placeholder="Որոնել ապրանք..." />
-                    <button class="search-btn" aria-label="Search">
-                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    </button>
-                </div>
-            </div>
-            <div class="language-switcher">
-            <button class="lang-btn" onclick="changeLanguage('pl')" title="Polski">🇵🇱</button>
-            <button class="lang-btn" onclick="changeLanguage('hy')" title="Հայերեն">🇦🇲</button>
-            <button class="lang-btn" onclick="changeLanguage('ru')" title="Русский">🇷🇺</button>
-            <button class="lang-btn" onclick="changeLanguage('en')" title="English">en</button>
-            </div>
-            <!-- Actions -->
-            <div class="header-actions">
-                <button class="action-btn" aria-label="Favorites">
-                    <i class="fa-solid fa-heart"></i>
+        <!-- Search -->
+        <div class="search-wrap">
+            <div class="search-box">
+                <input type="text" data-i18n="search" placeholder="Որոնել ապրանք..." />
+                <button class="search-btn" aria-label="Search">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
-                <div class="action-divider"></div>
-                <button class="phone-btn">
-                    <i class="fa-solid fa-phone"></i>
-                    010 00-00-00
-                </button>
-                <button class="action-btn" aria-label="Cart" onclick="openCartModal()">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="badge">0</span>
-               </button>
             </div>
         </div>
+
+        <!-- Language Selector Icon -->
+        <button class="language-icon-btn" onclick="openLanguageModal()" title="Ընտրել լեզուն">
+       <i class="fa-solid fa-globe"></i>
+       </button>
+
+        <!-- Actions -->
+        <div class="header-actions">
+            <button class="action-btn" aria-label="Favorites">
+                <i class="fa-solid fa-heart"></i>
+            </button>
+            <div class="action-divider"></div>
+            <button class="phone-btn">
+                <i class="fa-solid fa-phone"></i>
+                010 00-00-00
+            </button>
+            <button class="action-btn" aria-label="Cart" onclick="openCartModal()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge">0</span>
+            </button>
+        </div>
+    </div>
+</header>
     </header>
    
 

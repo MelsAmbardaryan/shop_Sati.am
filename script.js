@@ -225,27 +225,28 @@ function checkout() {
 }
 
 // i18next կարգավորում
+// ==================== i18next ԿԱՐԳԱՎՈՐՈՒՄ ====================
+
 i18next
-  .use(i18nextBrowserLanguageDetector)
-  .init({
-    lng: 'hy', // սկզբնական լեզու
-    fallbackLng: 'hy',
-    debug: true,
-    resources: {
-      hy: { translation: {} }, // կլցվի JSON ֆայլից
-      ru: { translation: {} },
-      en: { translation: {} },
-      pl: { translation: {} }
-    }
-  }, function(err, t) {
-    updateContent();
-  });
+    .use(i18nextBrowserLanguageDetector)
+    .use(i18nextHttpBackend)
+    .init({
+        lng: 'hy',
+        fallbackLng: 'hy',
+        debug: true,
+        backend: {
+            loadPath: '/locales/{{lng}}/translation.json'
+        }
+    }, function(err, t) {
+        if (err) console.error('i18next error:', err);
+        updateContent();
+    });
 
 // Լեզուն փոխել
 function changeLanguage(lng) {
     i18next.changeLanguage(lng, () => {
         updateContent();
-        localStorage.setItem('i18nextLng', lng); // հիշել ընտրությունը
+        localStorage.setItem('i18nextLng', lng);
     });
 }
 
@@ -253,15 +254,18 @@ function changeLanguage(lng) {
 function updateContent() {
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        element.innerHTML = i18next.t(key);
+        if (key) {
+            element.innerHTML = i18next.t(key);
+        }
     });
 }
 
 // Էջը բեռնելիս
 window.onload = () => {
-    // ... քո նախկին կոդը (loadProducts և այլն)
-
-    // Լեզուն վերականգնել
+    // Վերականգնում ենք նախկինում ընտրված լեզուն
     const savedLang = localStorage.getItem('i18nextLng') || 'hy';
     changeLanguage(savedLang);
+
+    // ... քո մյուս կոդը (Swiper, loadProducts և այլն)
+    // օրինակ՝ loadProducts('all');
 };
