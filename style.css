@@ -34,37 +34,62 @@ body {
     overflow-x: hidden;
 }
 
-/* Announcement Bar */
+/* ====================== ANNOUNCEMENT BAR ====================== */
+
 .announcement-bar {
-    background: var(--green);
+    background: linear-gradient(90deg, #1b5e20, #2e7d32);
     color: white;
     text-align: center;
-    padding: 8px 20px;
-    font-size: 13px;
+    padding: 10px 20px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.03em;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
 }
 
 .announcement-bar::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    animation: shimmer 3s infinite;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: shimmer 4s infinite linear;
 }
 
 @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0%   { left: -100%; }
+    100% { left: 200%; }
 }
+
+/* Մոբիլային տարբերակ */
+@media (max-width: 600px) {
+    .announcement-bar {
+        font-size: 13px;
+        padding: 9px 12px;
+        line-height: 1.4;
+    }
+    
+    .announcement-bar br {
+        display: none;
+    }
+}
+/* ====================== ANNOUNCEMENT BAR END ====================== */
 
 /* Header */
 .header {
     width: 100%;
     background: var(--cream);
-    padding: 14px 28px;
+    padding: 12px 20px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -74,15 +99,15 @@ body {
 }
 
 .header-inner {
-    max-width: 1300px;
+max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+    grid-template-columns: auto auto 1fr auto auto;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
     background: var(--white);
     border-radius: 14px;
-    padding: 10px 20px;
+    padding: 8px 16px;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
 }
@@ -150,16 +175,20 @@ body {
 }
 
 /* Search */
-.search-wrap { flex: 1; }
+.search-wrap {
+    flex: 1;
+    max-width: 380px;   /* սահմանափակում ենք չափը */
+}
 
 .search-box {
     display: flex;
     align-items: center;
     background: var(--gray-100);
-    border-radius: var(--radius-pill);
+    border-radius: 50px;
     border: 1.5px solid var(--gray-200);
     overflow: hidden;
     transition: var(--transition);
+    height: 44px;       
 }
 
 .search-box:focus-within {
@@ -171,11 +200,12 @@ body {
 .search-box input {
     flex: 1;
     border: none;
-    padding: 10px 18px;
+    padding: 0 16px;
     outline: none;
     background: transparent;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--dark);
+    height: 100%;
 }
 
 .search-box input::placeholder {
@@ -183,7 +213,7 @@ body {
 }
 
 .search-btn {
-    background: var(--green-light);
+    background: var(--green);
     border: none;
     width: 44px;
     height: 44px;
@@ -195,17 +225,12 @@ body {
 }
 
 .search-btn:hover {
-    background: var(--green);
+    background: var(--green-light);
 }
 
-.search-btn svg {
-    width: 16px;
-    height: 16px;
-    stroke: white;
-    fill: none;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.search-btn i {
+    color: white;
+    font-size: 18px;
 }
 
 /* Header Actions */
@@ -262,25 +287,10 @@ body {
     margin: 0 4px;
 }
 
-.phone-btn {
+/* Language Selector */
+.language-switcher, .language-icon-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: var(--green-glow);
-    border: 1.5px solid rgba(46,125,50,0.2);
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    color: var(--green);
-    font-weight: 600;
-    font-size: 13px;
-    white-space: nowrap;
-}
-
-.phone-btn:hover {
-    background: var(--green);
-    color: white;
-    border-color: var(--green);
 }
 
 /* Hero Section */
@@ -771,8 +781,6 @@ body {
 }
 /* ====================== ԺԱՄԱՆԱԿԱԿԻՑ ԼԵԶՈՒՆԵՐԻ ԸՆՏՐԱՑՈՒՑԱԿ ====================== */
 
-/* ====================== ԺԱՄԱՆԱԿԱԿԻՑ ԼԵԶՈՒՆԵՐԻ ԸՆՏՐԱՑՈՒՑԱԿ ====================== */
-
 .language-switcher {
     display: flex;
     gap: 8px;
@@ -869,4 +877,205 @@ body {
 .language-icon-btn:hover {
     background: rgba(27, 94, 32, 0.08);
     transform: scale(1.12);
+}
+/* ====================== ՄԵՆՅՈՒ ՄՈԴԱԼ ====================== */
+
+.menu-modal-content {
+    width: 85%;
+    max-width: 380px;
+    height: 100vh;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 5px 0 25px rgba(0,0,0,0.18);
+    overflow-y: auto;
+    padding-bottom: 30px;
+}
+
+.menu-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+.menu-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1b5e20;
+}
+
+.menu-items {
+    padding: 10px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 25px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16.5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item:hover {
+    background: #f0f7f0;
+    color: #1b5e20;
+    padding-left: 30px;
+}
+
+.menu-item i {
+    font-size: 20px;
+    width: 28px;
+    color: #2e7d32;
+    transition: 0.3s;
+}
+
+.menu-item:hover i {
+    transform: scale(1.15);
+    color: #1b5e20;
+}
+.header-inner {
+ max-width: 1550px; /* Match the nav-area width */
+}
+:root{
+ --lw-bg: #ffffff;
+ --lw-text: #222;
+ --lw-shadow: 0 6px 18px rgba(41,165,162,0.08);
+ font-family: Inter, Arial, sans-serif;
+}
+
+.lw-wrap * { box-sizing: border-box; }
+
+.lw-wrap{
+ position: relative;
+ display: inline-block;
+ z-index: 9999;
+ top: calc(100% + -40px); /* 8px → 16px */
+}
+
+.lw-btn{
+ display: flex;
+ align-items: center;
+ gap: 0px;
+ padding: 6px 12px;
+ background: var(--lw-bg);
+ border-radius: 12px;
+ box-shadow: var(--lw-shadow);
+ border: 1px solid rgba(0,0,0,0.04);
+ cursor: pointer;
+ user-select: none;
+ white-space: nowrap;
+ transition: transform .12s ease;
+ position: relative;
+ z-index: 1000;
+}
+
+.lw-btn:active{transform: translateY(1px);}
+
+.lw-flag img{width: 20px;}
+
+.lw-label{font-weight: 600; color: var(--lw-text); font-size: 14px;}
+.lw-caret{margin-left:auto; font-size: 14px; color: rgba(0,0,0,0.85); transition: transform .18s;}
+
+.lw-menu{
+ position: absolute;
+ right: 0;
+ top: calc(100% + 8px);
+ background: var(--lw-bg);
+ border-radius: 12px;
+ padding: 6px 0;
+ box-shadow: 0 18px 40px rgba(23,45,56,0.08);
+ min-width: 180px;
+ border: 1px solid rgba(0,0,0,0.04);
+ opacity: 0;
+ transform: translateY(-6px) scale(.98);
+ pointer-events: none;
+ transition: opacity .18s ease, transform .18s ease;
+ z-index: 9999;
+}
+
+.lw-menu.lw-show{
+ opacity: 1;
+ transform: translateY(0) scale(1);
+ pointer-events: auto;
+}
+
+.lw-option{
+ display: flex;
+ gap: 10px;
+ align-items: center;
+ padding: 8px 14px;
+ border-radius: 10px;
+ cursor: pointer;
+ transition: background .12s ease;
+ text-decoration: none;
+ color: var(--lw-text);
+ font-size: 14px;
+}
+
+.lw-option img{
+ width: 20px;
+}
+
+.lw-option:hover{
+ background: rgba(41,165,162,0.06);
+}
+
+.lw-option[data-checked="true"]{
+ background: linear-gradient(90deg, rgba(41,165,162,0.10), rgba(41,165,162,0.03));
+}
+
+/* Մոբիլային օպտիմիզացիա */
+@media (max-width: 480px) {
+    .menu-modal-content {
+        width: 92%;
+    }
+    
+    .menu-item {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}
+@media (max-width: 900px) {
+    .header-inner {
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+        padding: 8px 12px;
+    }
+    
+    .menu-btn span {
+        display: none;
+    }
+    
+    .phone-btn {
+        display: none;
+    }
+    
+    .search-wrap {
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-wrap {
+        max-width: 200px;
+    }
+    
+    .header-inner {
+        gap: 8px;
+    }
 }

@@ -224,48 +224,81 @@ function checkout() {
     updateCartBadge();
 }
 
-// i18next կարգավորում
-// ==================== i18next ԿԱՐԳԱՎՈՐՈՒՄ ====================
+// ==================== ՄԵՆՅՈՒ ՄՈԴԱԼ ====================
 
-i18next
-    .use(i18nextBrowserLanguageDetector)
-    .use(i18nextHttpBackend)
-    .init({
-        lng: 'hy',
-        fallbackLng: 'hy',
-        debug: true,
-        backend: {
-            loadPath: '/locales/{{lng}}/translation.json'
-        }
-    }, function(err, t) {
-        if (err) console.error('i18next error:', err);
-        updateContent();
-    });
-
-// Լեզուն փոխել
-function changeLanguage(lng) {
-    i18next.changeLanguage(lng, () => {
-        updateContent();
-        localStorage.setItem('i18nextLng', lng);
-    });
+// Մենյու մոդալը բացել
+function openMenuModal() {
+    document.getElementById('menuModal').style.display = 'flex';
 }
 
-// Բովանդակությունը թարմացնել
-function updateContent() {
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (key) {
-            element.innerHTML = i18next.t(key);
-        }
-    });
+// Մենյու մոդալը փակել
+function closeMenuModal() {
+    document.getElementById('menuModal').style.display = 'none';
 }
 
-// Էջը բեռնելիս
-window.onload = () => {
-    // Վերականգնում ենք նախկինում ընտրված լեզուն
-    const savedLang = localStorage.getItem('i18nextLng') || 'hy';
-    changeLanguage(savedLang);
+// Եթե օգտատերը սեղմի մոդալի դրսի մասում՝ փակել
+document.getElementById('menuModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeMenuModal();
+    }
+});
 
-    // ... քո մյուս կոդը (Swiper, loadProducts և այլն)
-    // օրինակ՝ loadProducts('all');
-};
+// Keyboard-ով փակել ESC ստեղնով
+document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+        const menuModal = document.getElementById('menuModal');
+        if (menuModal.style.display === 'flex') {
+            closeMenuModal();
+        }
+    }
+});
+// Goօgle Translate  
+ function googleTranslateElementInit() {
+ new google.translate.TranslateElement({
+ pageLanguage: 'hy',
+ includedLanguages: 'en,hy,ru,',
+ autoDisplay: false
+ }, 'google_translate_element');
+ }
+
+ function translateTo(lang) {
+ var combo = document.querySelector("select.goog-te-combo");
+ if (combo) {
+ combo.value = lang;
+ combo.dispatchEvent(new Event('change'));
+ }
+ }
+
+ (function(){
+ const btn = document.getElementById("lwBtn");
+ const menu = document.getElementById("lwMenu");
+ const flag = document.getElementById("lwFlag").querySelector("img");
+ const label = document.getElementById("lwLabel");
+ const caret = document.getElementById("lwCaret");
+
+ btn.onclick = (e) => {
+ e.stopPropagation();
+ const isOpen = menu.classList.toggle("lw-show");
+ caret.style.transform = isOpen ? "rotate(180deg)" : "rotate(0)";
+ };
+
+ document.addEventListener("click", () => {
+ menu.classList.remove("lw-show");
+ caret.style.transform = "rotate(0)";
+ });
+
+ document.querySelectorAll(".lw-option").forEach(opt => {
+ opt.addEventListener("click", (e) => {
+ e.stopPropagation();
+
+ document.querySelectorAll(".lw-option").forEach(o => o.dataset.checked = "false");
+ opt.dataset.checked = "true";
+
+ flag.src = opt.querySelector("img").src;
+ label.textContent = opt.textContent.trim();
+
+ menu.classList.remove("lw-show");
+ caret.style.transform = "rotate(0)";
+ });
+ });
+})();

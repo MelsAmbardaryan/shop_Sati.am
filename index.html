@@ -14,6 +14,51 @@
 </head>
 <body>
 
+    <!-- Menu Modal -->
+    <div id="menuModal" class="modal menu-modal">
+        <div class="menu-modal-content">
+            <div class="menu-header">
+                <h2>Մենյու</h2>
+                <span class="close-modal" onclick="closeMenuModal()">×</span>
+            </div>
+            <div class="menu-items">
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-house"></i> Գլխավոր</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-shop"></i> Բոլոր ապրանքները</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-wine-glass"></i> Խմիչքներ</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-cheese"></i> Կաթնամթերք</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-drumstick-bite"></i> Մսամթերք</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-mug-hot"></i> Սուրճ և թեյ</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-candy-cane"></i> Քաղցրավենիք</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-wheat-awn"></i> Ցորենի արտադրանք</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-gift"></i> Հուշանվերներ</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Modal -->
+    <div id="languageModal" class="modal">
+        <div class="modal-content language-modal">
+            <div class="modal-header">
+                <h2>Ընտրեք լեզուն</h2>
+                <span class="close-modal" onclick="closeLanguageModal()">×</span>
+            </div>
+            <div class="language-options">
+                <button onclick="translateTo('hy'); closeLanguageModal()" class="lang-option">
+                    🇦🇲 <span>Հայերեն</span>
+                </button>
+                <button onclick="translateTo('en'); closeLanguageModal()" class="lang-option">
+                    🇬🇧 <span>English</span>
+                </button>
+                <button onclick="translateTo('ru'); closeLanguageModal()" class="lang-option">
+                    🇷🇺 <span>Русский</span>
+                </button>
+                <button onclick="translateTo('pl'); closeLanguageModal()" class="lang-option">
+                    🇵🇱 <span>Polski</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Announcement Bar -->
     <div class="announcement-bar">
         Անվճար առաքում 20,000 AMD-ից բարձր պատվերների համար &nbsp;|&nbsp; Գործում է ամեն օր 09:00 - 21:00
@@ -21,56 +66,48 @@
 
     <!-- Header -->
     <header class="header">
-    <!-- Header -->
-<header class="header">
-    <div class="header-inner">
-        <!-- Menu -->
-        <button class="menu-btn">
-            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            <span data-i18n="menu">Մենյու</span>
-        </button>
+        <div class="header-inner">
+            <!-- Menu -->
+            <button class="menu-btn" onclick="openMenuModal()">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <span>Մենյու</span>
+            </button>
 
-        <!-- Logo -->
-        <div class="logo">
-            <span class="logo-main">Sati</span>
-            <span class="logo-badge">.am</span>
-        </div>
+            <!-- Logo -->
+            <div class="logo">
+                <span class="logo-main">Sati</span>
+                <span class="logo-badge">.am</span>
+            </div>
 
-        <!-- Search -->
-        <div class="search-wrap">
-            <div class="search-box">
-                <input type="text" data-i18n="search" placeholder="Որոնել ապրանք..." />
-                <button class="search-btn" aria-label="Search">
-                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <!-- Search -->
+            <div class="search-wrap">
+                <div class="search-box">
+                    <input type="text" placeholder="Որոնել ապրանք..." id="searchInput">
+                    <button class="search-btn" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Actions -->
+            <div class="header-actions">
+                <button class="action-btn" aria-label="Cart" onclick="openCartModal()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge">0</span>
                 </button>
             </div>
-        </div>
-
-        <!-- Language Selector Icon -->
-        <button class="language-icon-btn" onclick="openLanguageModal()" title="Ընտրել լեզուն">
-       <i class="fa-solid fa-globe"></i>
-       </button>
-
-        <!-- Actions -->
-        <div class="header-actions">
-            <button class="action-btn" aria-label="Favorites">
-                <i class="fa-solid fa-heart"></i>
-            </button>
-            <div class="action-divider"></div>
-            <button class="phone-btn">
-                <i class="fa-solid fa-phone"></i>
-                010 00-00-00
-            </button>
-            <button class="action-btn" aria-label="Cart" onclick="openCartModal()">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="badge">0</span>
+            <!-- Language Selector -->
+            <button class="language-icon-btn" onclick="openLanguageModal()" title="Ընտրել լեզուն">
+                <span class="lang-flags">🇦🇲</span>
             </button>
         </div>
-    </div>
-</header>
+            
     </header>
-   
 
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-slider">
             <div class="swiper mySlider">
@@ -102,14 +139,12 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
 
-        <!-- Side Banners -->
         <div class="hero-banners">
             <div class="banner">
                 <div class="banner-placeholder b-placeholder-1">Նոր Ժամանումներ</div>
@@ -153,6 +188,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Products Section -->
     <section class="products-section">
         <div class="section-header">
             <h2>Մեր Ապրանքները</h2>
@@ -173,29 +210,29 @@
         </div>
     </section>
 
-    <!-- Զամբյուղի Մոդալ -->
+    <!-- Cart Modal -->
     <div id="cartModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>🛒 Ձեր զամբյուղը</h2>
                 <span class="close-modal" onclick="closeCartModal()">×</span>
             </div>
-            
-            <div id="cartItems" class="cart-items">
-                <!-- Ապրանքները կավելանան JavaScript-ով -->
-            </div>
-
+            <div id="cartItems" class="cart-items"></div>
             <div class="cart-total">
                 <strong>Ընդհանուր գումար:</strong>
                 <span id="cartTotal">0 AMD</span>
             </div>
-
             <div class="modal-actions">
                 <button onclick="closeCartModal()" class="btn-secondary">Շարունակել գնումները</button>
                 <button onclick="checkout()" class="btn-primary">Պատվիրել</button>
             </div>
         </div>
     </div>
+
+    <!-- Google Translate -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
