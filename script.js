@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Horizontal Scroll Arrows
     const leftBtn = document.getElementById('scrollLeft');
     const rightBtn = document.getElementById('scrollRight');
+    const navInner = document.getElementById('navInner')
 
     if (leftBtn && rightBtn) {
         leftBtn.addEventListener('click', () => {
@@ -252,24 +253,9 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
-// Goօgle Translate  
- function googleTranslateElementInit() {
- new google.translate.TranslateElement({
- pageLanguage: 'hy',
- includedLanguages: 'en,hy,ru,',
- autoDisplay: false
- }, 'google_translate_element');
- }
 
- function translateTo(lang) {
- var combo = document.querySelector("select.goog-te-combo");
- if (combo) {
- combo.value = lang;
- combo.dispatchEvent(new Event('change'));
- }
- }
 
- (function(){
+(function(){
  const btn = document.getElementById("lwBtn");
  const menu = document.getElementById("lwMenu");
  const flag = document.getElementById("lwFlag").querySelector("img");

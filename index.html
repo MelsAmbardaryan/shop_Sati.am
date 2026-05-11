@@ -30,35 +30,10 @@
                 <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-mug-hot"></i> Սուրճ և թեյ</a>
                 <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-candy-cane"></i> Քաղցրավենիք</a>
                 <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-wheat-awn"></i> Ցորենի արտադրանք</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-gift"></i> Հուշանվերներ</a>
+                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-gift"></i> Պահածոյացված</a>
             </div>
         </div>
     </div>
-
-    <!-- Language Modal -->
-    <div id="languageModal" class="modal">
-        <div class="modal-content language-modal">
-            <div class="modal-header">
-                <h2>Ընտրեք լեզուն</h2>
-                <span class="close-modal" onclick="closeLanguageModal()">×</span>
-            </div>
-            <div class="language-options">
-                <button onclick="translateTo('hy'); closeLanguageModal()" class="lang-option">
-                    🇦🇲 <span>Հայերեն</span>
-                </button>
-                <button onclick="translateTo('en'); closeLanguageModal()" class="lang-option">
-                    🇬🇧 <span>English</span>
-                </button>
-                <button onclick="translateTo('ru'); closeLanguageModal()" class="lang-option">
-                    🇷🇺 <span>Русский</span>
-                </button>
-                <button onclick="translateTo('pl'); closeLanguageModal()" class="lang-option">
-                    🇵🇱 <span>Polski</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Announcement Bar -->
     <div class="announcement-bar">
         Անվճար առաքում 20,000 AMD-ից բարձր պատվերների համար &nbsp;|&nbsp; Գործում է ամեն օր 09:00 - 21:00
@@ -67,7 +42,6 @@
     <!-- Header -->
     <header class="header">
         <div class="header-inner">
-            <!-- Menu -->
             <button class="menu-btn" onclick="openMenuModal()">
                 <svg viewBox="0 0 24 24" width="20" height="20">
                     <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
@@ -77,13 +51,11 @@
                 <span>Մենյու</span>
             </button>
 
-            <!-- Logo -->
             <div class="logo">
                 <span class="logo-main">Sati</span>
                 <span class="logo-badge">.am</span>
             </div>
-
-            <!-- Search -->
+<div id="google_translate_element" style="display:none;"> </div>
             <div class="search-wrap">
                 <div class="search-box">
                     <input type="text" placeholder="Որոնել ապրանք..." id="searchInput">
@@ -92,19 +64,42 @@
                     </button>
                 </div>
             </div>
-            <!-- Actions -->
-            <div class="header-actions">
+               <div class="header-actions">
                 <button class="action-btn" aria-label="Cart" onclick="openCartModal()">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="badge">0</span>
                 </button>
+                <div class="currency-wrapper">
+<button type="button" class="currency-btn btn-reset text-white" data-bs-toggle="dropdown" aria-expanded="false">
+<a class="currency-list-option" onclick="translateTo('hy')" data-value="USD"></a>
+<a class="currency-list-option" onclick="translateTo('ru')" data-value="CAD"></a>
+</div>
+<div class="lw-wrap" id="lwSwitcher">
+<button class="lw-btn" id="lwBtn">
+<span class="lw-flag" id="lwFlag">
+<img src="https://tinatour.com/ex/armenia.png">
+</span>
+<span class="lw-caret" id="lwCaret">▾</span>
+</button>
+</div>
+<div class="lw-menu" id="lwMenu">
+ <a class="lw-option" onclick="translateTo('hy')" data-lang="hy" data-checked="true">
+ <img src="https://tinatour.com/ex/armenia.png"> Հայերեն
+ </a>
+
+ <a class="lw-option" onclick="translateTo('en')" data-lang="en">
+ <img src="https://tinatour.com/ex/united-kingdom.png"> English
+ </a>
+
+ <a class="lw-option" onclick="translateTo('ru')" data-lang="ru">
+ <img src="https://tinatour.com/ex/russia.png"> Русский 
+ </a>
+ </div>  
+</div>
+
+
+
             </div>
-            <!-- Language Selector -->
-            <button class="language-icon-btn" onclick="openLanguageModal()" title="Ընտրել լեզուն">
-                <span class="lang-flags">🇦🇲</span>
-            </button>
-        </div>
-            
     </header>
 
     <!-- Hero Section -->
@@ -126,7 +121,7 @@
                         <div class="slide-content">
                             <div class="slide-tag">Զեղչ մինչև 50%</div>
                             <div class="slide-title">Ամենամեծ<br>Վաճառք տարվա</div>
-                            <button class="slide-cta">Գնել հիմա</button>
+                            <button class="slide-cta" aria-label="Գնել հիմա">Գնել հիմա</button>
                         </div>
                     </div>
 
@@ -228,9 +223,28 @@
             </div>
         </div>
     </div>
+<script>
+ function googleTranslateElementInit() {
+ new google.translate.TranslateElement({
+ pageLanguage: 'hy',
+ includedLanguages: 'en,hy,ru',
+ autoDisplay: false
+ }, 'google_translate_element');
+ }
 
-    <!-- Google Translate -->
-    <div id="google_translate_element" style="display:none;"></div>
+ function translateTo(lang) {
+ var combo = document.querySelector("select.goog-te-combo");
+ if (combo) {
+ combo.value = lang;
+ combo.dispatchEvent(new Event('change'));
+ }
+ }
+</script>
+
+
+
+
+
 
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
