@@ -218,6 +218,49 @@ max-width: 1600px;
     font-size: 18px;
 }
 
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.phone-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 12px;
+    transition: all 0.3s;
+    background: rgba(27, 94, 32, 0.05);
+}
+
+.phone-link:hover {
+    background: rgba(27, 94, 32, 0.12);
+    transform: translateY(-1px);
+}
+
+.phone-link i {
+    font-size: 20px;
+    color: var(--green);
+}
+
+.phone-label {
+    font-size: 12px;
+    color: #666;
+    display: block;
+    line-height: 1;
+}
+
+.phone-number {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--dark);
+    white-space: nowrap;
+}
+
 /* Header Actions */
 .header-actions {
     display: flex;
@@ -1309,12 +1352,49 @@ max-width: 1600px;
     }
 }
 
+
+
+.parent-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.submenu {
+    padding-left: 35px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #fafafa;
+}
+
+.sub-item {
+    padding-left: 25px !important;
+}
 /* ====================== ԼԱՎԱԳՈՒՅՆ ՓՈՐՁ (Extra optimizations) ====================== */
 
 /* Թաքցնում ենք որոշ տարրեր շատ փոքր էկրաններին */
 @media (max-width: 480px) {
     .hero-banners {
         display: none; /* կամ փոքրացրեք չափը */
+    }
+}
+@media (max-width: 640px) {
+    .header-inner {
+        grid-template-columns: auto 1fr auto;
+    }
+    
+    .search-wrap {
+        grid-column: 1 / -1;
+        order: 3;
+        margin-top: 8px;
     }
 }
 

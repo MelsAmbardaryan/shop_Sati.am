@@ -14,26 +14,126 @@
 </head>
 <body>
 
-    <!-- Menu Modal -->
-    <div id="menuModal" class="modal menu-modal">
-        <div class="menu-modal-content">
-            <div class="menu-header">
-                <h2>Մենյու</h2>
-                <span class="close-modal" onclick="closeMenuModal()">×</span>
+ <!-- Menu Modal -->
+<div id="menuModal" class="modal menu-modal">
+    <div class="menu-modal-content">
+        <div class="menu-header">
+            <h2>Մենյու</h2>
+            <span class="close-modal" onclick="closeMenuModal()">×</span>
+        </div>
+        
+        <div class="menu-items">
+            <a href="#" class="menu-item" onclick="closeMenuModal()">
+                <i class="fa-solid fa-house"></i> Գլխավոր
+            </a>
+            
+            <a href="#" class="menu-item" onclick="closeMenuModal()">
+                <i class="fa-solid fa-shop"></i> Բոլոր ապրանքները
+            </a>
+
+            <!-- Խմիչքներ -->
+            <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-wine-glass"></i> 
+                    Խմիչքներ
+                    <span class="arrow">›</span>
+                </div>
+                <div class="submenu">
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Հյութեր</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Կոմպոտներ</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Լիմոնադներ</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Ջուր</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Թան</a>
+                </div>
             </div>
-            <div class="menu-items">
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-house"></i> Գլխավոր</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-shop"></i> Բոլոր ապրանքները</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-wine-glass"></i> Խմիչքներ</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-cheese"></i> Կաթնամթերք</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-drumstick-bite"></i> Մսամթերք</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-mug-hot"></i> Սուրճ և թեյ</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-candy-cane"></i> Քաղցրավենիք</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-wheat-awn"></i> Ցորենի արտադրանք</a>
-                <a href="#" class="menu-item" onclick="closeMenuModal()"><i class="fa-solid fa-gift"></i> Պահածոյացված</a>
+
+            <!-- Կաթնամթերք -->
+            <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-cheese"></i> 
+                    Կաթնամթերք
+                    <span class="arrow">›</span>
+                </div>
+                <div class="submenu">
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Պանրի տեսականի</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Թան</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Մածուն</a>
+                </div>
+            </div>
+
+            <!-- Մսամթերք -->
+             <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-drumstick-bite"></i> 
+                    Մսամթերք
+                    <span class="arrow"></span>
+                </div>
+            </div>
+
+
+            <!-- Պահածոյացված -->
+             <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-gift"></i>
+                    <div class="submenu"></div> 
+                    Պահածոյացված ապրանքներ
+                    <span class="arrow"></span>
+                </div>
+                
+            </div>
+
+            <!-- Սուրճ և թեյ -->
+            <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-mug-hot"></i> 
+                    Սուրճ և թեյ
+                    <span class="arrow">›</span>
+                </div>
+                <div class="submenu">
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Սուրճ</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Թեյերի տեսականի</a>
+                </div>
+            </div>
+
+            <!-- Ցորենի արտադրանք -->
+            <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-wheat-awn"></i> 
+                    Ցորենի արտադրանք
+                    <span class="arrow">›</span>
+                </div>
+                <div class="submenu">
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Լավաշ</a>
+                </div>
+            </div>
+
+            <!-- Քաղցրավենիք -->
+            <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-candy-cane"></i> 
+                    Քաղցրավենիք
+                    <span class="arrow">›</span>
+                </div>
+                <div class="submenu">
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Քաղցր ձողիկներ</a>
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Թխվածքներ</a>
+                </div>
+            </div>
+
+            <!-- Հացահատիկներ -->
+            <div class="menu-category">
+                <div class="menu-item parent-item" onclick="toggleSubmenu(this)">
+                    <i class="fa-solid fa-seedling"></i> 
+                    Հացահատիկներ
+                    <span class="arrow">›</span>
+                </div>
+                <div class="submenu">
+                    <a href="#" class="menu-item sub-item" onclick="closeMenuModal()">Ձավարեղեն</a>
+                </div>
             </div>
         </div>
     </div>
+</div>
     <!-- Announcement Bar -->
     <div class="announcement-bar">
         Անվճար առաքում 20,000 AMD-ից բարձր պատվերների համար &nbsp;|&nbsp; Գործում է ամեն օր 09:00 - 21:00
@@ -55,7 +155,8 @@
                 <span class="logo-main">Sati</span>
                 <span class="logo-badge">.am</span>
             </div>
-<div id="google_translate_element" style="display:none;"> </div>
+
+           <div id="google_translate_element" style="display:none;"> </div>
             <div class="search-wrap">
                 <div class="search-box">
                     <input type="text" placeholder="Որոնել ապրանք..." id="searchInput">
@@ -63,6 +164,15 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
+            </div>
+            <div class="header-right">
+            <a href="tel:+37400000000" class="phone-link">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                    <span class="phone-label">Զանգահարեք մեզ</span>
+                    <span class="phone-number">+374 00 00 00 00</span>
+                </div>
+            </a>
             </div>
                <div class="header-actions">
                 <button class="action-btn" aria-label="Cart" onclick="openCartModal()">

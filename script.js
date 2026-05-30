@@ -66,7 +66,30 @@ async function loadProducts() {
         grid.innerHTML = '<p style="text-align:center; color:red;">Սխալ է տեղի ունեցել</p>';
     }
 }
+// Submenu Toggle
+function toggleSubmenu(element) {
+    const category = element.parentElement;
+    const submenu = category.querySelector('.submenu');
+    const arrow = element.querySelector('.arrow');
+    
+    // Փակում ենք բոլոր մյուսները
+    document.querySelectorAll('.submenu').forEach(sub => {
+        if (sub !== submenu) {
+            sub.style.maxHeight = null;
+            const otherArrow = sub.parentElement.querySelector('.arrow');
+            if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+        }
+    });
 
+    // Բացում/փակում ընթացիկը
+    if (submenu.style.maxHeight) {
+        submenu.style.maxHeight = null;
+        arrow.style.transform = 'rotate(0deg)';
+    } else {
+        submenu.style.maxHeight = submenu.scrollHeight + "px";
+        arrow.style.transform = 'rotate(90deg)';
+    }
+}
 // Ապրանքները ցուցադրել
 function renderProducts(category) {
     const grid = document.getElementById('productsGrid');
