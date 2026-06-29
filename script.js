@@ -252,20 +252,33 @@ function checkout() {
 
 // Մենյու մոդալը բացել
 function openMenuModal() {
-    document.getElementById('menuModal').style.display = 'flex';
+    document.getElementById('menuModal').classList.add('active');
 }
 
-// Մենյու մոդալը փակել
 function closeMenuModal() {
-    document.getElementById('menuModal').style.display = 'none';
+    document.getElementById('menuModal').classList.remove('active');
 }
 
-// Եթե օգտատերը սեղմի մոդալի դրսի մասում՝ փակել
-document.getElementById('menuModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeMenuModal();
+// Submenu toggle
+function toggleSubmenu(element) {
+    const submenu = element.nextElementSibling;
+    const isActive = element.classList.contains('active');
+
+    // Փակում ենք բոլոր բաց submenu-ները
+    document.querySelectorAll('.parent-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.nextElementSibling) {
+            item.nextElementSibling.classList.remove('active');
+        }
+    });
+
+    if (!isActive) {
+        element.classList.add('active');
+        submenu.classList.add('active');
     }
-});
+}
+
+
 
 // Keyboard-ով փակել ESC ստեղնով
 document.addEventListener('keydown', function(e) {
