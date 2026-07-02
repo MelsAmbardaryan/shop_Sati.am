@@ -329,16 +329,19 @@ max-width: 1600px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     position: relative;
+    height: 520px;
 }
 
 .mySlider {
     width: 100%;
-    height: 420px;
+    height:100%;
 }
 
 .swiper-slide {
-    position: relative;
-    overflow: hidden;
+   position: relative;
+   height: 520px !important;
+   background-size: cover;
+   background-position: center;
 }
 
 .slide-placeholder {
@@ -359,8 +362,8 @@ max-width: 1600px;
 
 .slide-content {
     position: absolute;
-    bottom: 36px;
-    left: 36px;
+    bottom: 50px;
+    left: 50px;
     z-index: 10;
     color: white;
 }
@@ -379,7 +382,7 @@ max-width: 1600px;
 
 .slide-title {
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: 46px;
     font-weight: 900;
     line-height: 1.15;
     text-shadow: 0 2px 12px rgba(0,0,0,0.3);
@@ -452,10 +455,12 @@ max-width: 1600px;
 .hero-banners {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap:22px;
 }
 
 .banner {
+    min-height: 248px;
+    padding: 35px;
     flex: 1;
     border-radius: var(--radius);
     overflow: hidden;
@@ -464,6 +469,10 @@ max-width: 1600px;
     position: relative;
     background: var(--gray-100);
 }
+.banner h3 {
+    font-size: 26px;
+}
+
 
 .banner-placeholder {
     width: 100%;
@@ -482,57 +491,61 @@ max-width: 1600px;
 
 /* Features Strip */
 .features-strip {
-    max-width: 1300px;
-    margin: 0 auto 36px;
+    max-width:1400px;
+    margin:40px auto 50px ;
     padding: 0 28px;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(260px, 1fr);
+    gap: 20px;
 }
 
 .feature-card {
     background: white;
-    border-radius: var(--radius-sm);
-    padding: 20px;
+    border-radius: var(--radius);
+    padding: 24px 20px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 18px;
     border: 1.5px solid var(--gray-200);
-    transition: var(--transition);
+    transition: all 0.3s ease;
+    box-shadow:0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .feature-card:hover {
     border-color: var(--green-light);
-    box-shadow: 0 0 0 3px var(--green-glow), var(--shadow-md);
-    transform: translateY(-2px);
+    box-shadow: 0 10px 0 25px var(--green-glow), var(--shadow-md);
+    transform: translateY(-6px);
 }
 
 .feature-icon {
-    width: 44px;
-    height: 44px;
-    background: var(--green-glow);
-    border-radius: 10px;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--green);
-    font-size: 18px;
+    color: #1b5e20;
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(27, 94, 32, 0.15);
 }
 
 .feature-text strong {
     display: block;
-    font-size: 14px;
+    font-size: 15.5px;
     font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 2px;
+    color: #1f2937;
+    margin-bottom: 3px;
 }
 
 .feature-text span {
-    font-size: 12px;
-    color: var(--gray-500);
+    font-size: 13.5px;
+    color: #6b7280;
+    line-height: 1.3;
 }
 
 /* ====================== ԱՊՐԱՆՔՆԵՐԻ ԲԱԺԻՆ (Sati.am ոճ) ====================== */
@@ -1190,7 +1203,10 @@ z-index: 10000 !important;    /* Ավելի բարձր, քան header-ը */
     }
 
     .features-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .feature-card {
+        padding: 20px;
     }
 
     .products-grid {
