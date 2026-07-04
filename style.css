@@ -1146,17 +1146,32 @@ z-index: 10000 !important;    /* Ավելի բարձր, քան header-ը */
 }
 
 /* ====================== RESPONSIVE FOOTER ====================== */
-@media (max-width: 992px) {
-    .footer-top {
+@media (max-width: 1024px) {
+    .header-inner {
+        grid-template-columns: auto auto 1fr auto;
+        gap: 12px;
+        padding: 10px 16px;
+    }
+   .hero-section {
         grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
+        gap: 18px;
+        padding: 0 20px;
+        margin: 20px auto;
     }
-    
-    .footer-columns {
-        grid-template-columns: repeat(2, 1fr);
+    .mySlider, .swiper-slide {
+        height: 420px !important;
     }
+ 
+
+
+
+
+
+
+
 }
+    
+
 
 @media (max-width: 640px) {
     .footer-columns {
