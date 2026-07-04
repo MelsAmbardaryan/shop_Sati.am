@@ -174,7 +174,9 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="badge">0</span>
                 </button>
-                <div class="currency-wrapper">
+
+
+<div class="currency-wrapper">
 <button type="button" class="currency-btn btn-reset text-white" data-bs-toggle="dropdown" aria-expanded="false">
 <a class="currency-list-option" onclick="translateTo('hy')" data-value="USD"></a>
 <a class="currency-list-option" onclick="translateTo('ru')" data-value="CAD"></a>
@@ -182,29 +184,30 @@
 <div class="lw-wrap" id="lwSwitcher">
 <button class="lw-btn" id="lwBtn">
 <span class="lw-flag" id="lwFlag">
-<img src="https://tinatour.com/ex/armenia.png">
+<img src="https://flagcdn.com/w40/am.png">
 </span>
 <span class="lw-caret" id="lwCaret">▾</span>
 </button>
 </div>
+
 <div class="lw-menu" id="lwMenu">
  <a class="lw-option" onclick="translateTo('hy')" data-lang="hy" data-checked="true">
- <img src="https://tinatour.com/ex/armenia.png"> Հայերեն
+ <img src="https://flagcdn.com/w40/am.png"> Հայերեն
  </a>
 
  <a class="lw-option" onclick="translateTo('en')" data-lang="en">
- <img src="https://tinatour.com/ex/united-kingdom.png"> English
+ <img src="https://flagcdn.com/w40/gb.png"> English
  </a>
 
  <a class="lw-option" onclick="translateTo('ru')" data-lang="ru">
- <img src="https://tinatour.com/ex/russia.png"> Русский 
+ <img src="https://flagcdn.com/w40/ru.png"> Русский 
+ </a>
+ <a class="lw-option" onclick="translateTo('pl')" data-lang="pl">
+ <img src="https://flagcdn.com/w40/pl.png"> Polska 
  </a>
  </div>  
 </div>
-
-
-
-            </div>
+</div>
     </header>
 
     <!-- Hero Section -->
@@ -403,25 +406,36 @@
  function googleTranslateElementInit() {
  new google.translate.TranslateElement({
  pageLanguage: 'hy',
- includedLanguages: 'en,hy,ru',
+ includedLanguages: 'en,hy,ru,pl',
  autoDisplay: false
  }, 'google_translate_element');
  }
+function translateTo(lang) {
+    const combo = document.querySelector(".goog-te-combo");
+    
+    if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        
+        // Լրացուցիչ — սպասում ենք մի քանի վայրկյան և կրկին փորձում
+        setTimeout(() => {
+            if (combo.value !== lang) {
+                combo.value = lang;
+                combo.dispatchEvent(new Event('change'));
+            }
+        }, 800);
+    } else {
+        console.warn("Google Translate combo not found yet");
+    }
+}
 
- function translateTo(lang) {
- var combo = document.querySelector("select.goog-te-combo");
- if (combo) {
- combo.value = lang;
- combo.dispatchEvent(new Event('change'));
- }
- }
 </script>
 
 
 
 
 
-
+    <div id="google_translate_element" style="display: none;"></div>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
